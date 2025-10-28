@@ -298,7 +298,7 @@ class LinkedList {
             return;
         }
 
-        if ($this->head->data === $value) {
+        if ($this->head->data === $data) {
             // If it matches the value of the head,
             // delete the head node by setting it to its
             // next pointer
@@ -308,7 +308,7 @@ class LinkedList {
 
         $current = $this->head;
         // Loop through until we find the node that has the value to be deleted
-        while ($current->next !== null && $current->next->data !== $value) {
+        while ($current->next !== null && $current->next->data !== $data) {
             $current = $current->next;
         }
 
@@ -330,6 +330,9 @@ echo $list->traverse();
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
 
+// delete test
+$list->delete('x');
+echo $list->traverse();
 
 $list = new LinkedList();
 $list->append('l');
@@ -346,6 +349,8 @@ $list->head = $list->sortList($list->head);
 echo $list->traverse();
 
 
+
+
 // Integer cases
 $list = new LinkedList();
 $list->append(8);
@@ -356,6 +361,11 @@ $list->append(5);
 echo $list->traverse();
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
+
+// delete test
+$list->delete(5);
+echo $list->traverse();
+
 
 $list = new LinkedList();
 $list->append(67);
