@@ -3,6 +3,7 @@
 namespace SortedLinkedList;
 
 use Exception;
+use SortedLinkedList\Node;
 
 class LinkedList
 {
