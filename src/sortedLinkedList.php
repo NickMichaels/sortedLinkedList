@@ -47,9 +47,6 @@ $list->head = $list->sortList($list->head);
 echo $list->traverse();
 echo "\n\n";
 
-
-
-
 // Integer cases
 $list = new LinkedList();
 $list->append(8);
@@ -68,7 +65,6 @@ $list->delete(5);
 echo $list->traverse();
 echo "\n\n";
 
-
 $list = new LinkedList();
 $list->append(67);
 $list->append(33);
@@ -83,7 +79,6 @@ echo "\n\n";
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
 echo "\n\n";
-
 
 // Error cases
 $list = new LinkedList();
