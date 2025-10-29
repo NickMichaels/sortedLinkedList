@@ -21,12 +21,15 @@ $list->append('a');
 $list->append('d');
 $list->append('f');
 echo $list->traverse();
+echo "\n\n";
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
+echo "\n\n";
 
 // delete test
 $list->delete('x');
 echo $list->traverse();
+echo "\n\n";
 
 $list = new LinkedList();
 $list->append('l');
@@ -39,8 +42,10 @@ $list->append('w');
 $list->append('d');
 $list->append('f');
 echo $list->traverse();
+echo "\n\n";
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
+echo "\n\n";
 
 
 
@@ -53,12 +58,15 @@ $list->append(9);
 $list->append(5);
 
 echo $list->traverse();
+echo "\n\n";
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
+echo "\n\n";
 
 // delete test
 $list->delete(5);
 echo $list->traverse();
+echo "\n\n";
 
 
 $list = new LinkedList();
@@ -71,8 +79,10 @@ $list->append(99);
 $list->append(2);
 
 echo $list->traverse();
+echo "\n\n";
 $list->head = $list->sortList($list->head);
 echo $list->traverse();
+echo "\n\n";
 
 
 // Error cases
