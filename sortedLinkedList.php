@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/vendor/autoload.php';
 
 use SortedLinkedList\LinkedList;
 
@@ -82,7 +82,7 @@ echo "\n\n";
 
 // Error cases
 $list = new LinkedList();
-//$list->append(1.5);
+$list->append(1.5);
 
 $list = new LinkedList();
 $list->append(1);
