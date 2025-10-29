@@ -6,7 +6,7 @@
     },
     "autoload": {
         "psr-4": {
-            "SortedLinkedList\\": "src/classes/",
+            "SortedLinkedList\\": "src/",
             "Tests\\": "tests/"
         }
     }
