@@ -133,16 +133,16 @@ class LinkedList
     {
         // set the var to be the head node
         $current = $this->head;
-        $str = "\n";
+        $str = "";
         while ($current !== null) {
             $str .= strval($current->data) . " -> ";
             $current = $current->next;
         }
 
-        // replace the last -> with a \n
+        // replace the last -> with a blank space
         $str = substr_replace(
             $str,
-            "\n\n",
+            "",
             intval(strrpos($str, " -> ")),
             strlen(" -> ")
         );
