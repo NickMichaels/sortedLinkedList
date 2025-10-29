@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<ruleset
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd"
+>
+
+    <!-- Define the coding standard(s) to use -->
+    <rule ref="PSR12"/>
+
+    <!-- Specify the directories to check -->
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- Exclude specific directories or files from the scan -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+
+    <!-- Show progress and sniff codes in the report -->
+    <arg value="ps"/>
+
+    <!-- Set the file extensions to check -->
+    <arg name="extensions" value="php"/>
+
+</ruleset>
