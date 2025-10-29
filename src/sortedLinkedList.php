@@ -17,10 +17,10 @@
  */
 
 class Node {
-    public $data;
-    public $next;
+    public int|string $data;
+    public ?Node $next;
 
-    public function __construct($data) {
+    public function __construct(int|string $data) {
         $this->data = $data;
         // null value at first
         $this->next = null; 
@@ -28,7 +28,7 @@ class Node {
 }
 
 class LinkedList {
-    public $head;
+    public ?Node $head;
 
     public function __construct() {
         // initially no head node
@@ -43,7 +43,7 @@ class LinkedList {
      * If the list already contains a node with a string, 
      * all future nodes must be strings and the same for ints
      *
-     * @param  int|string $data Data to populate into a node in the list
+     * @param  mixed $data Data to populate into a node in the list
      * @return void
      */
     public function validateInput($data): void
@@ -147,7 +147,6 @@ class LinkedList {
      * echo the string itself, but I feel like this allows
      * for more flexibility
      *
-     * @param  void
      * @return string
      */
     public function traverse(): string
@@ -156,7 +155,7 @@ class LinkedList {
         $current = $this->head;
         $str = "\n";
         while ($current !== null) {
-            $str .= $current->data . " -> ";
+            $str .= strval($current->data) . " -> ";
             $current = $current->next;
         }
 
@@ -164,7 +163,7 @@ class LinkedList {
         $str = substr_replace(
             $str, 
             "\n\n", 
-            strrpos($str, " -> "), 
+            intval(strrpos($str, " -> ")), 
             strlen(" -> ")
         );        
 
@@ -184,13 +183,13 @@ class LinkedList {
      * Which we then compare to one another and alter their $next
      * values in order to sort, though this happens in mergeNodes
      * 
-     * @param  Node $node 
-     * @return Node 
+     * @param  ?Node $node 
+     * @return ?Node 
      */
-    public function sortList(Node $node): Node
+    public function sortList(?Node $node): ?Node
     {
-        // The list is empty or only has one node, then its already sorted
-        if (!isset($node) || !isset($node->next)) {
+        // If the list only has one node, then its already sorted
+        if (!isset($node->next)) {
             return $node;
         }
 
@@ -198,7 +197,9 @@ class LinkedList {
         $slow = $node;
         $fast = $node->next;
         while ($fast !== null && $fast->next !== null) {
-            $slow = $slow->next;
+            if (isset($slow->next)) {
+                $slow = $slow->next;
+            }
             $fast = $fast->next->next;
         }
 
@@ -218,11 +219,11 @@ class LinkedList {
     /**
      * Compare nodes either as ints or strings and then merge them together
      * 
-     * @param  Node|null $node First node to compare
-     * @param  Node|null $node Second node to compare
-     * @return Node 
+     * @param  ?Node $first  First node to compare
+     * @param  ?Node $second Second node to compare
+     * @return ?Node
      */
-    public function mergeNodes($first, $second): Node
+    public function mergeNodes(?Node $first, ?Node $second): ?Node
     {
         // If either list is empty, return the other list
         if (!$first)
@@ -240,7 +241,7 @@ class LinkedList {
 
         // Pick the smaller value between first and second nodes
         if ($alphaList) {
-            if (strcmp($first->data, $second->data) <= 0) {
+            if (strcmp(strval($first->data), strval($second->data)) <= 0) {
                 $first->next = $this->mergeNodes($first->next, $second);
                 return $first;
             }
@@ -264,7 +265,6 @@ class LinkedList {
     /**
      * Reverse the linked list
      * 
-     * @param  void
      * @return void 
      */
     public function reverse(): void 
@@ -383,7 +383,7 @@ echo $list->traverse();
 
 // Error cases
 $list = new LinkedList();
-$list->append(1.5);
+//$list->append(1.5);
 
 $list = new LinkedList();
 $list->append(1);
